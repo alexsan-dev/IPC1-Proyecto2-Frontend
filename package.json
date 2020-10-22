@@ -14,11 +14,11 @@
     "typescript": "~3.9.7"
   },
   "scripts": {
-    "start": "onchange './src/Lang/Strings.json' -- quicktype ./src/Lang/Strings.json -o ./src/LocalGlobals/Strings.ts --just-types & yarn dev",
+    "start": "onchange './src/Lang/Strings.json' -- quicktype ./src/Lang/Strings.json -o ./src/Env/Strings.ts --just-types & yarn dev",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "config": "yarn add --dev prettier tslint tslint-config-prettier tslint-plugin-prettier tslint-react node-sass quicktype onchange",
+    "config": "yarn add --dev prettier@1.19.0 tslint tslint-config-prettier tslint-plugin-prettier tslint-react node-sass quicktype onchange",
     "dev": "react-scripts start",
     "predeploy": "yarn build",
     "deploy": "firebase deploy"
@@ -37,5 +37,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "node-sass": "^4.14.1",
+    "onchange": "^7.1.0",
+    "prettier": "1.19.0",
+    "quicktype": "^15.0.258",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.3.0",
+    "tslint-react": "^5.0.0"
   }
 }
