@@ -40,17 +40,17 @@ const Login: React.FC<LoginProps> = (props: LoginProps) => {
 		// DATOS
 		if (dataRef.current.user_name.length && dataRef.current.password.length)
 			reqLogin(dataRef.current).then((body: string) => {
-				window.Alert({
-					title: 'Ocurrió un error',
-					body,
-					type: body.startsWith('Error') ? 'error' : 'alert',
-				})
-
 				// GUARDAR
 				if (!body.startsWith('Error'))
 					getUser(dataRef.current.user_name).then((user: User) => {
 						window.localStorage.setItem('user', JSON.stringify(user))
 						setUser(user)
+					})
+				else
+					window.Alert({
+						title: 'Ocurrió un error',
+						body,
+						type: 'error',
 					})
 			})
 	}
