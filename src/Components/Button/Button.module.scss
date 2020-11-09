@@ -1,0 +1,24 @@
+.button {
+	display: inline-block;
+	appearance: none;
+	border: none;
+	outline: none;
+	font-size: 14px;
+	width: 130px;
+	padding: 10px 0;
+	border-radius: 8px;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.filled {
+	border: 2px solid transparent;
+	color: #fff;
+	background-color: var(--purple);
+}
+
+.outlined {
+	border: 2px solid var(--purple);
+	color: var(--purple);
+	background-color: transparent;
+}
