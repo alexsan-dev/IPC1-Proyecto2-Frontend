@@ -30,8 +30,8 @@ const AuthProvider: React.FC = (props: ComponentProps<'div'>) => {
 
 	// ACTUALIZAR ESTADO Y RUTA
 	if (JSON.stringify(cUser) !== JSON.stringify(user)) setUser(cUser)
-	if (cUser) history.push(tmpPath)
-	if (tmpPath === '/' && cUser) history.push('/apps')
+	if (cUser) history.replace(tmpPath)
+	if (tmpPath === '/' && cUser) history.replace('/apps')
 
 	return <AuthContext.Provider value={{ user, setUser }}>{props.children}</AuthContext.Provider>
 }

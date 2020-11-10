@@ -11,4 +11,5 @@ interface SigningData {
 	user_name: string
 	password: string
 	type: 'user' | 'admin'
+	cPassword: string
 }

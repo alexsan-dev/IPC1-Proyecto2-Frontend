@@ -11,6 +11,7 @@ interface ButtonProps {
 	onClick?: () => any
 	outlined?: boolean
 	type?: 'button' | 'submit' | 'reset'
+	icon?: JSX.Element
 }
 
 const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
@@ -21,6 +22,7 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
 				props.className
 			}`}
 			onClick={props.onClick}>
+			{props.icon}
 			{props.text}
 		</button>
 	)

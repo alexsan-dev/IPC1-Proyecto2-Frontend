@@ -13,17 +13,16 @@
 	outline: none;
 }
 
-@mixin tab-focus() {
-	outline: none;
-}
-
 body {
+	--green: #4caf50;
+	--blue: #2196f3;
+	--lightblue: #91e5fd;
 	--purple: #8a7df7;
 	--red: #d11335;
 	--white: #fff;
 	font-size: 15px;
 	overflow-x: hidden;
-	background: var(--white);
+	background: #f5f5f5;
 }
 
 /* LISTAS */

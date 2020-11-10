@@ -20,6 +20,10 @@ import { Es } from 'Env/Strings'
 // ALERTAS
 import withAlerts from '@weareluastudio/lualert'
 
+// LAYOUT
+import SideBar from 'Layouts/SideBar/SideBar'
+import Account from 'Pages/Account/Account'
+
 // ESTADO
 interface AppState {
 	langCode: string
@@ -37,7 +41,9 @@ const App: React.FC = () => {
 		<MainContext.Provider value={{ ...DefState }}>
 			<BrowserRouter>
 				<AuthProvider>
+					<SideBar />
 					<Switch>
+						<Route exact path='/cuenta' component={Account} />
 						<Route exact path='/' component={Index} />
 					</Switch>
 				</AuthProvider>

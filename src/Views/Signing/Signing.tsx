@@ -15,12 +15,13 @@ import { reqSigning } from 'Utils/Auth'
 import getUser from 'Utils/User'
 
 // DATOS POR DEFECTO
-const defData: SigningData = {
+export const defUser: SigningData = {
 	name: '',
 	last_name: '',
 	user_name: '',
 	password: '',
 	type: 'user',
+	cPassword: '',
 }
 
 // PROPIEDADES
@@ -33,28 +34,37 @@ const Signing: React.FC<SigningProps> = (props: SigningProps) => {
 	const { setUser } = useContext(AuthContext)
 
 	// REFERENCIAS
-	const dataRef: MutableRefObject<SigningData> = useRef(defData)
+	const dataRef: MutableRefObject<SigningData> = useRef(defUser)
 
 	// ENVIAR
 	const sendForm = (ev: FormEvent) => {
 		ev.preventDefault()
 
 		// DATOS
-		if (dataRef.current.user_name.length && dataRef.current.password.length)
-			reqSigning(dataRef.current).then((body: string) => {
-				// GUARDAR
-				if (!body.startsWith('Error'))
-					getUser(dataRef.current.user_name).then((user: User) => {
-						window.localStorage.setItem('user', JSON.stringify(user))
-						setUser(user)
-					})
-				else
-					window.Alert({
-						title: 'Ocurrió un error',
-						body,
-						type: 'error',
-					})
-			})
+		if (dataRef.current.user_name.length && dataRef.current.password.length) {
+			if (dataRef.current.cPassword === dataRef.current.password)
+				reqSigning(dataRef.current).then((body: string) => {
+					// GUARDAR
+					if (!body.startsWith('Error'))
+						getUser(dataRef.current.user_name).then((user: User) => {
+							window.localStorage.setItem('user', JSON.stringify(user))
+							setUser(user)
+						})
+					else
+						window.Alert({
+							title: 'Ocurrió un error',
+							body,
+							type: 'error',
+						})
+				})
+			else {
+				window.Alert({
+					title: 'Ocurrió un error',
+					body: 'Las contraseñas no coinciden, intenta nuevamente.',
+					type: 'error',
+				})
+			}
+		}
 	}
 
 	// GUARDAR DATOS
@@ -97,6 +107,14 @@ const Signing: React.FC<SigningProps> = (props: SigningProps) => {
 				id='sPass'
 				autoComplete='current-password'
 				onChange={saveData('password')}
+			/>
+			<input
+				type='password'
+				name='cPass'
+				placeholder='Confirmar contraseña'
+				id='cPass'
+				autoComplete='current-password'
+				onChange={saveData('cPassword')}
 			/>
 			<div className={Styles.actions}>
 				<Button type='button' text='Iniciar sesión' outlined onClick={props.onLogin} />
