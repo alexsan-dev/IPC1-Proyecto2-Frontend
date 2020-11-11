@@ -22,7 +22,10 @@ import withAlerts from '@weareluastudio/lualert'
 
 // LAYOUT
 import SideBar from 'Layouts/SideBar/SideBar'
+
+// PAGINAS
 import Account from 'Pages/Account/Account'
+import Apps from 'Pages/Apps/Apps'
 
 // ESTADO
 interface AppState {
@@ -45,6 +48,7 @@ const App: React.FC = () => {
 					<Switch>
 						<Route exact path='/cuenta' component={Account} />
 						<Route exact path='/' component={Index} />
+						<Route exact path='/apps' component={Apps} />
 					</Switch>
 				</AuthProvider>
 			</BrowserRouter>

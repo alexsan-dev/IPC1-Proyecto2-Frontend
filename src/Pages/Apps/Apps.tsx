@@ -1,15 +1,17 @@
 // REACT
-import React from 'react'
+import React, { useContext } from 'react'
 
 // VIEWS
-import Dashboard from 'Views/Dashboard/Dashboard'
+import AdminApps from 'Views/Apps/Admin/AdminApps'
+
+// CONTEXTO
+import AuthContext from 'Context/AuthContext'
 
 const Apps = () => {
-	return (
-		<div>
-			<Dashboard />
-		</div>
-	)
+	// CONTEXTO
+	const { user } = useContext(AuthContext)
+
+	return <div>{user?.type === 'admin' && <AdminApps />}</div>
 }
 
 export default Apps

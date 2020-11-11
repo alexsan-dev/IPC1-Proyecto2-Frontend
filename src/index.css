@@ -25,6 +25,14 @@ body {
 	background: #f5f5f5;
 }
 
+button {
+	transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+button:hover {
+	transform: scale(1.1);
+}
+
 /* LISTAS */
 
 ul,
